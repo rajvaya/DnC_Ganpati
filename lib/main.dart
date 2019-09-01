@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Ganesh Advice for DnC',
       theme: ThemeData(
       ),
       home: MyHomePage(title: 'Get Advice from bapa'),
