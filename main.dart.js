@@ -18834,7 +18834,7 @@ return P.al(null,t)}})
 return P.am($async$lq,t)},
 bp:function(){this.bK()
 this.lq()},
-V:function(a){return new S.mT(new F.r0("Get Advice from bapa",null),"Flutter Demo",X.I7(null),null)},
+V:function(a){return new S.mT(new F.r0("Get Advice from bapa",null),"Ganesh Advice for DnC",X.I7(null),null)},
 $aai:function(){return[F.r_]}}
 F.Ld.prototype={
 $0:function(){$.Tn=this.a
