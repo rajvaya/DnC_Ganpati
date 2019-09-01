@@ -1,6 +1,7 @@
 import 'package:flutter_web/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
 void main() => runApp(MyApp());
 bool isLoad = true;
 var advice;
@@ -12,36 +13,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
- cal() async {
+  cal() async {
     final response = await http.get('https://api.adviceslip.com/advice');
     print(response.body);
     print('data aaya');
     var datafromjson = json.decode(response.body)['slip']['advice'];
     print(datafromjson);
 
-   setState(() {
-     advice = datafromjson;
-     isLoad = false;
-   });
-
+    setState(() {
+      advice = datafromjson;
+      isLoad = false;
+    });
   }
-
-
-
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-     cal();
-
+    cal();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ganesh Advice for DnC',
       theme: ThemeData(
+        primaryColor: Color(0xff32E085),
       ),
       home: MyHomePage(title: 'Get Advice from bapa'),
     );
@@ -59,48 +56,83 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.title,style: TextStyle(color:Color(0xff32E085) ),),
-        backgroundColor: Color(0xffffffff),leading: Padding(
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Color(0xff32E085)),
+        ),
+        backgroundColor: Color(0xffffffff),
+        leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.network('http://www.designncode.co.in/img/res/dnc_logo.png'),
+          child: Image.network(
+              'http://www.designncode.co.in/img/res/dnc_logo.png'),
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
               child: Container(
-                child: isLoad ? Container(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff32E085)),
-                    ),
-                  ),
-                )
-                : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-       SizedBox(child: Image.network('https://cdn.dribbble.com/users/2185491/screenshots/5500050/3.png'),height: 400,width: 299,),
-                  Text('Design & Code wish u Happy Ganesh Chaturthi and We pray to God for your prosperous life. May you find all the delights of life, May your all dreams come true. Happy Ganesh Chaturthi\n',
-                  textAlign: TextAlign.center, style: TextStyle(color: Color(0xff32E085),fontSize: 22),),
-                  Text('Advice for you from Bapa\n',  style: TextStyle(color: Color(0xff424242),fontSize: 20), textAlign: TextAlign.center,),
-                  Text(advice+'\n\n',  style: TextStyle(color: Color(0xff32E085),fontSize: 18),textAlign: TextAlign.center,),
-                  SizedBox(height: 16,),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Image.asset('d_n_c_labs.png',height: 40,width: 110,),
-                      Text('Devloped by Raj Vaya',  style: TextStyle(color: Color(0xff424242),fontSize: 16),),
-                    ],
-                  )
-                ],
-            ),
+                child: isLoad
+                    ? Container(
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xff32E085)),
+                          ),
+                        ),
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+
+                          Image.network(
+                                'https://cdn.dribbble.com/users/2185491/screenshots/5500050/3.png',height: 275,),
+
+                          Text(
+                            'Design & Code wish u Happy Ganesh Chaturthi and We pray to God for your prosperous life. May you find all the delights of life, May your all dreams come true. Happy Ganesh Chaturthi\n',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color(0xff32E085), fontSize: 22),
+                          ),
+                          Text(
+                            'Advice for you from Bapa',
+                            style: TextStyle(
+                                color: Color(0xff424242), fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            advice + '\n\n',
+                            style: TextStyle(
+                                color: Color(0xff32E085), fontSize: 18),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Image.asset(
+                                'd_n_c_labs.png',
+                                height: 40,
+                                width: 110,
+                              ),
+                              Text(
+                                'Developed By Raj Vaya',
+                                style: TextStyle(
+                                    color: Color(0xff424242), fontSize: 16),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
               ),
+            ),
           ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
