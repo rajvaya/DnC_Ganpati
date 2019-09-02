@@ -89,11 +89,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
 
-                          Image.network(
-                                'https://cdn.dribbble.com/users/2185491/screenshots/5500050/3.png',height: 275,),
+                          Padding(
+                            padding: const EdgeInsets.all(26.0),
+                            child: Image.network(
+                                  'https://cdn.dribbble.com/users/2185491/screenshots/5500050/3.png',height: 275,),
+                          ),
 
                           Text(
-                            'Design & Code wish u Happy Ganesh Chaturthi and We pray to God for your prosperous life. May you find all the delights of life, May your all dreams come true. Happy Ganesh Chaturthi\n',
+                            'Design & Code wishes u Happy Ganesh Chaturthi and We pray to God for your prosperous life. May you find all the delights of life, May your all dreams come true. Happy Ganesh Chaturthi\n',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Color(0xff32E085), fontSize: 22),
